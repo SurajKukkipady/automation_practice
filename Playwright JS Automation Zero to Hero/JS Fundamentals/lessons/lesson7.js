@@ -16,3 +16,15 @@ var car = ["BMW", "Volvo", "Saab", "Ford"];
 for (let i of car) {
   console.log(i);
 }
+
+for (let i of car) {
+  console.log(i);
+  if (i == "Saab") {
+    break;
+  }
+}
+
+//ES6 syntax for each loop
+car.forEach(i => {
+  console.log(i);
+});
