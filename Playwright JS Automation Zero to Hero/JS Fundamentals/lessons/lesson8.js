@@ -33,3 +33,13 @@ function printName(name){
 }
 
 printName("John");
+
+// Function with return
+
+function multiplyByTwo(num){
+    var result = num * 2;
+    return result;
+}
+
+var myResult = multiplyByTwo(5);
+console.log(myResult);
