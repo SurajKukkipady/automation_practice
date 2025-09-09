@@ -16,4 +16,6 @@ def testUIchecks(page):
     frame.get_by_role("link", name="All Access Plan").click()
     expect(frame.locator('body')).to_contain_text("Happy Subscibers")
 
-
+    #Mouse hover
+    page.locator('#mousehover').hover()
+    page.get_by_role("link", name="Top").click()
