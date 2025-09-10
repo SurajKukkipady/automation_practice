@@ -20,4 +20,5 @@ class APIUtils:
                              data=orders_payload, headers={"Authorization": token,
                              "Content-Type": "application/json"})
 
-        response.json()
+        response_body = response.json()
+        return response_body['orders'][0]

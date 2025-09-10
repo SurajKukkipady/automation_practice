@@ -10,10 +10,18 @@ def test_e2e_web_api(playwright : Playwright):
 
     #create order via API
     api_utils = APIUtils()
-    api_utils.create_order(playwright)
+    order_id = api_utils.create_order(playwright)
 
     #login flow
     page.goto("https://rahulshettyacademy.com/client")
-    page.get_by_placeholder("Email").fill("test@testee.com")
-    page.get_by_placeholder("Password").fill("ABcd@1234")
+    page.get_by_placeholder("email@example.com").fill("test@testee.com")
+    page.get_by_placeholder("enter your passsword").fill("ABcd@1234")
     page.get_by_role("button", name="Login").click()
+
+    page.locator('button').filter(has_text='Order').click()
+    page.locator('tr').filter(has_text=order_id).get_by_role('button', name='View').click()
+
+    expect(page.locator('.tagline')).to_have_text('Thank you for Shopping With Us')
+
+
+
