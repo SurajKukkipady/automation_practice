@@ -1,0 +1,6 @@
+Best Practices for framework design
+
+1. Avoid hardcoding values
+2. Externalize test data
+3. Use POM
+4.Centralize reusable methods
