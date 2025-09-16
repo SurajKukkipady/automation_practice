@@ -1,5 +1,5 @@
 from playwright.sync_api import Page, expect, Playwright
-
+import json
 from apiBase import APIUtils
 
 
@@ -7,6 +7,11 @@ def test_e2e_web_api(playwright : Playwright):
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
+
+    #read json file
+    with open('credentials.json') as f:
+        test_data = json.load(f)
+        print(test_data)
 
     #create order via API
     api_utils = APIUtils()
