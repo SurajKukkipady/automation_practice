@@ -3,6 +3,7 @@ import json
 from apiBase import APIUtils
 import pytest
 from login_page import Login_Page
+from dashboard_page import Dashboard_Page
 
 with open('credentials.json') as f:
     test_data = json.load(f)
@@ -18,7 +19,6 @@ def test_e2e_web_api(playwright : Playwright, user):
     user_name = user['user_email']
     password = user['password']
 
-
     #create order via API
     api_utils = APIUtils()
     order_id = api_utils.create_order(playwright, user)
@@ -27,14 +27,10 @@ def test_e2e_web_api(playwright : Playwright, user):
     login_page = Login_Page(page)
     login_page.navigate()
 
-    login_page.login()
+    login_page.login(user_name, password)
 
-    page.get_by_placeholder("email@example.com").fill(user['user_email'])
-    page.get_by_placeholder("enter your passsword").fill(user['password'])
-    page.get_by_role("button", name="Login").click()
-
-    page.locator('button').filter(has_text='Order').click()
-    page.locator('tr').filter(has_text=order_id).get_by_role('button', name='View').click()
+    dashboard_page = Dashboard_Page(page)
+    dashboard_page.selectOrderNavLink(order_id)
 
     expect(page.locator('.tagline')).to_have_text('Thank you for Shopping With Us')
 
