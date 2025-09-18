@@ -1,26 +1,28 @@
 from playwright.sync_api import Page, expect, Playwright
 import json
 from apiBase import APIUtils
+import pytest
 
+with open('credentials.json') as f:
+    test_data = json.load(f)
+    print(test_data)
+    user_list = test_data['user_credentials']
 
-def test_e2e_web_api(playwright : Playwright):
+@pytest.mark.parametrize("user", user_list)
+def test_e2e_web_api(playwright : Playwright, user):
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
 
-    #read json file
-    with open('credentials.json') as f:
-        test_data = json.load(f)
-        print(test_data)
 
     #create order via API
     api_utils = APIUtils()
-    order_id = api_utils.create_order(playwright)
+    order_id = api_utils.create_order(playwright, user)
 
     #login flow
     page.goto("https://rahulshettyacademy.com/client")
-    page.get_by_placeholder("email@example.com").fill("test@testee.com")
-    page.get_by_placeholder("enter your passsword").fill("ABcd@1234")
+    page.get_by_placeholder("email@example.com").fill(user['user_email'])
+    page.get_by_placeholder("enter your passsword").fill(user['password'])
     page.get_by_role("button", name="Login").click()
 
     page.locator('button').filter(has_text='Order').click()
