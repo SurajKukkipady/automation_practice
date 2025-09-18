@@ -2,6 +2,7 @@ from playwright.sync_api import Page, expect, Playwright
 import json
 from apiBase import APIUtils
 import pytest
+from login_page import Login_Page
 
 with open('credentials.json') as f:
     test_data = json.load(f)
@@ -14,13 +15,20 @@ def test_e2e_web_api(playwright : Playwright, user):
     context = browser.new_context()
     page = context.new_page()
 
+    user_name = user['user_email']
+    password = user['password']
+
 
     #create order via API
     api_utils = APIUtils()
     order_id = api_utils.create_order(playwright, user)
 
-    #login flow
-    page.goto("https://rahulshettyacademy.com/client")
+    #object for login page
+    login_page = Login_Page(page)
+    login_page.navigate()
+
+    login_page.login()
+
     page.get_by_placeholder("email@example.com").fill(user['user_email'])
     page.get_by_placeholder("enter your passsword").fill(user['password'])
     page.get_by_role("button", name="Login").click()
