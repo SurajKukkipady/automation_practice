@@ -1,0 +1,10 @@
+Best Practices for framework design
+
+1. Avoid hardcoding values
+2. Externalize test data
+3. Use POM
+4.Centralize reusable methods
+5. Apply tags for grouping tests
+6. Generate reports
+7. Capture logs
+8. CI/CD integration
