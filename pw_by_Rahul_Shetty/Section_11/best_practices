@@ -27,6 +27,8 @@ We can generate HTML reports using:
 pytest --html=report.html (report.html is the name of the report file)
 this is a part of pytest-html plugin
 
+We can tr
+
 
 
 
