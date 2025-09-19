@@ -8,3 +8,25 @@ Best Practices for framework design
 6. Generate reports
 7. Capture logs
 8. CI/CD integration
+
+We can mark a test with a tag like @smoke or @regression
+and then run tests based on these tags using the command:
+pytest -m "smoke"
+
+We can also select tests based on test names using:
+pytest -k "test_name" this will match any test with "test_name" in it.
+
+We can run only failed tests using:
+pytest --lf or pytest --last-failed
+
+We can run tests in parallel using:
+pytest -n 3 (where 3 is the number of parallel workers)
+this is a part of pytest-xdist plugin
+
+We can generate HTML reports using:
+pytest --html=report.html (report.html is the name of the report file)
+this is a part of pytest-html plugin
+
+
+
+
