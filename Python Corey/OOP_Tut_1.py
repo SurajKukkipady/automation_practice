@@ -10,17 +10,17 @@ class Employee:
         self.email = first + '.' + last + '@company.com'
         self.pay = pay
 
-emp1 = Employee()
-emp2 = Employee()
+    def fullname(self):
+        return f'{self.first} {self.last}'
 
-print(emp1)
-print(emp2)
+emp1 = Employee('John', 'Doe', 50000)
+emp2 = Employee('Jane', 'Smith', 60000)
 
-emp1.first = "Corey"
-emp1.last = "Schafer"
-
-emp2.first = "Sue"
-emp2.last = "Smith"
+# print(emp1)
+# print(emp2)
 
 print(emp1.first)
 print(emp2.last)
+
+print(emp1.fullname())
+print(emp2.fullname())
