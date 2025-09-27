@@ -1,7 +1,3 @@
-# Why use classes?
-# 1. Organize code into logical groups
-
-#A class is a blueprint for creating instances
 
 class Employee:
     def __init__(self, first, last, pay):
@@ -15,14 +11,3 @@ class Employee:
 
 emp1 = Employee('John', 'Doe', 50000)
 emp2 = Employee('Jane', 'Smith', 60000)
-
-# print(emp1)
-# print(emp2)
-
-print(emp1.first)
-print(emp2.last)
-
-print(emp1.fullname())
-print(emp2.fullname())
-
-print(Employee.fullname(emp1))
