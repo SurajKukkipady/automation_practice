@@ -1,0 +1,6 @@
+1. Install python from https://www.python.org/downloads/
+2. Install pip from https://pip.pypa.io/en/stable/installation/
+3. Install IDE (Integrated Development Environment) - PyCharm from https://www.jetbrains.com/pycharm/download/
+4. Install Selenium using pip command - pip install selenium
+5. Install WebDriver - Download ChromeDriver from https://sites.google.com/chromium.org/driver/
+6. Set path variable for ChromeDriver
