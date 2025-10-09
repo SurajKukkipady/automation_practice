@@ -27,6 +27,14 @@ print(message)
 # tagname[attribute='value']  -> input[type='submit']
 driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys('John')
 
+assert 'Success' in message
+
+# we can use #id and .class for CSS Selector
+# #exampleInputPassword1  -> for id
+# .form-control  -> for class
+
+# (//input[@type='text'])[3] can be used to select the 3rd element of the same type
+
 
 
 
