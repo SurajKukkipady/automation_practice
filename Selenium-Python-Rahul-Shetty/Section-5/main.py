@@ -35,6 +35,10 @@ assert 'Success' in message
 
 # (//input[@type='text'])[3] can be used to select the 3rd element of the same type
 
+driver.find_element(By.XPATH, "(//input[@type='text'])[3]").send_keys("USA")
+time.sleep(2)
+driver.find_element(By.XPATH, "(//input[@type='text'])[3]").clear()
+
 
 
 
